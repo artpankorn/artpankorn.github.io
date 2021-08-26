@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>14-loop-for.html</title>
+    <script>
+        let i
+        let j
+        function loop() {
+            document.getElementById("output").innerHTML =" "
+            j = parseInt(document.getElementById('num1').value)
+        for (i = 0; i < j ; i++){
+            document.getElementById("output").innerHTML += "Hello <br>"
+        }
+       
+    }
+    
+    </script>
+</head>
+<body>
+    Input Number : <input type="text" name="" id="num1">
+    <br>
+    <br>
+    <input type="Submit" value="Submit" onclick="loop()">
+    <br>
+    <p id="output"></p>
+    
+</body>
+</html>
