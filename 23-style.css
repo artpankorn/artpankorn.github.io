@@ -1,0 +1,31 @@
+.jumbotron {
+    position: relative;
+    overflow: hidden;
+    background-color: black;
+}
+
+video {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.container {
+    z-index: 2;
+    position: relative;
+}
+
+.navbar {
+    background-color: rgb(72, 255, 0);
+}
+
+body {
+    font-family: 'Taviraj', serif;
+}
+
+.art {
+    background-color: rgb(72, 255, 0);
+}
