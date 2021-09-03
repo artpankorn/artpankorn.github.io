@@ -13,8 +13,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Taviraj:wght@200&display=swap" rel="stylesheet">
-    
     <style>
+
         body {
             font-family: 'Taviraj', sans-serif;
             background-color: rgb(255, 254, 240);
@@ -55,7 +55,7 @@
         .art {
             background-color: rgb(109, 255, 80);
         }
- 
+
     </style>
     <title>24-set-local-storage.html</title>
 </head>
@@ -68,9 +68,9 @@
             src="https://cdn.videvo.net/videvo_files/video/free/2017-12/large_watermarked/171124_B1_HD_001_preview.mp4"
             autoplay loop muted></video>
 
-        <div class="container text-white">
+         <div class="container text-white">
             <h1 class="display-3">PANKORN Website</h1>
-            <p class="lead">Rayong Technical College </p>
+            <p class="lead">Rayong Technical College.by PANKORN PHUETPHAN </p>
         </div>
     </div>
 
@@ -94,13 +94,16 @@
                     <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Link</a>
+                    <a class="nav-link" href="24-set-local-storage.html">Page24</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="25-get-local-storage.html">Page25</a>
                 </li>
             </ul>
         </div>
     </nav>
 
-    <div class="container p-5 ">
+    <div class="container p-5">
         <div class="d-flex justify-content-center">
             <div class="card" style="width: 30rem;">
                 <img src="https://i.pinimg.com/736x/d2/b1/a1/d2b1a1ea550835c4413474dbd4ad4a6d.jpg"
@@ -121,6 +124,7 @@
                           </div>
                           <input class="btn btn-warning w-25" type="submit" value="Submit" onclick="setdata()">
                           <input class="btn btn-warning w-25" type="reset" value="Reset" onclick="resetdata()">
+                          <input class="btn btn-warning w-25" type="button" value="Delete Storage" onclick="deleteStorage()">
                     </p>
                    
  
@@ -151,28 +155,41 @@
         let employee = []
         let empid
         let empname
-        //let local_empid = []
-        //let local_empname = []
         function setdata() {
-            local_employee = localStorage.getItem('employee')
             employee = eval(local_employee)
             empid = document.getElementById('empid').value
             empname = document.getElementById('empname').value
-            console.log(empid+' '+empname)
-            employee.push({"empid" : empid,"empname" : empname})
-            //console.log(employee)
-            //employee=JSON.stringify({"empid" : empid,"empname" : empname})
-            localStorage.setItem('employee', JSON.stringify (employee))
-            //local_empid.push(empid)
-            //local_empname.push(empname)
-            //localStorage.setItem('empid',local_empid)
-            //localStorage.setItem('empname',local_empname)
-            document.getElementById('empid').value =' '
-            document.getElementById('empname').value =' '
+            if (empid != '' && empname != '') 
+            {
+            if (employee == null){
+                employee = [{"empid" : empid,"empname" : empname}]
+            } 
+            else 
+            {
+                employee.push({"empid" : empid,"empname" : empname})
+            }
+                localStorage.setItem('employee', JSON.stringify (employee))
+                local_employee = localStorage.getItem('employee')
+                document.getElementById('empid').value =' '
+                document.getElementById('empname').value =' ' 
+                alert('บันทึกข้อมูลแล้ว')
+
+            }else{
+                alert('กรุณาป้อนข้อมูล')
+            }
+            
         }
         function resetdata() {
             document.getElementById('empid').value =' '
             document.getElementById('empname').value =' '
+        }
+
+        function deleteStorage() {
+            if (confirm('ต้องการลบใช่ไหม')){
+            localStorage.removeItem('employee')
+            employee = []
+            local_employee = null
+            }
         }
     </script>
 </body>
